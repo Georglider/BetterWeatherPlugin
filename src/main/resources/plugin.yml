@@ -1,0 +1,6 @@
+name: BetterWeather
+version: '${version}'
+main: georglider.betterweather.BetterWeather
+api-version: 1.15
+authors: [ Georglider ]
+website: https://betterweathermc.herokuapp.com
