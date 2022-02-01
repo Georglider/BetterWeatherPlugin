@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.weather.ThunderChangeEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +23,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.UUID;
 
-public final class BetterWeather extends JavaPlugin {
+public final class BetterWeather extends JavaPlugin implements @NotNull Listener {
 
     public ConfigManager data;
     public int weatherChannel;
@@ -34,6 +35,7 @@ public final class BetterWeather extends JavaPlugin {
     @Override
     public void onEnable() {
         this.data = new ConfigManager(this);
+        // this.getServer().getPluginManager().registerEvents(this, this);
 
         String token = Objects.requireNonNull(data.getConfig().get("token")).toString();
         if (token.contains("herokuapp")) {
@@ -116,7 +118,7 @@ public final class BetterWeather extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    @EventHandler(priority= EventPriority.HIGHEST)
+    @EventHandler(priority=EventPriority.HIGHEST)
     public void onWeatherChange(WeatherChangeEvent event) {
         boolean rain = event.toWeatherState();
 

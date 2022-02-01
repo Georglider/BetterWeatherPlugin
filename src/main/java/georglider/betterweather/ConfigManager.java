@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ConfigManager {
 
@@ -61,6 +59,9 @@ public class ConfigManager {
 
         if (!this.configFile.exists()) {
             this.plugin.saveResource("config.yml", false);
+        }
+
+        if (this.configFile.length() == 0) {
             this.getConfig().set("token", "https://betterweathermc.herokuapp.com");
             this.getConfig().set("overrideDefaultWeather", true);
             this.saveConfig();
