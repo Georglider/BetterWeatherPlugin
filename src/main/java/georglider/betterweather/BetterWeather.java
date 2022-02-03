@@ -40,11 +40,11 @@ public final class BetterWeather extends JavaPlugin implements @NotNull Listener
         String token = Objects.requireNonNull(data.getConfig().get("token")).toString();
         if (token.contains("herokuapp")) {
             ConsoleCommandSender console = Bukkit.getConsoleSender();
-            console.sendMessage(ChatColor.GREEN + "Привет, спасибо за установку плагина");
-            console.sendMessage(ChatColor.GREEN + "Чтобы начать использовать его, перейдите по ссылке");
+            console.sendMessage(ChatColor.GREEN + "Thank you for installing plugin!");
+            console.sendMessage(ChatColor.GREEN + "To start using it, go to the link");
             console.sendMessage(ChatColor.BLUE + "https://betterweathermc.herokuapp.com");
-            console.sendMessage(ChatColor.GREEN + "Зарегистрируйтесь и вставьте токен в файл конфигурации");
-            console.sendMessage(ChatColor.GREEN + "Iли воспользуйтесь командой /betterweather token [ТОКЕН]");
+            console.sendMessage(ChatColor.GREEN + "Register and paste token into the configuration file");
+            // console.sendMessage(ChatColor.GREEN + "Iли воспользуйтесь командой /betterweather token [ТОКЕН]");
             return;
         }
 
@@ -91,12 +91,16 @@ public final class BetterWeather extends JavaPlugin implements @NotNull Listener
                                 Bukkit.getWorlds().forEach(x -> x.setStorm(false));
                                 break;
                             case "RAIN":
-                                Bukkit.getWorlds().forEach(x -> x.setStorm(true));
-                                Bukkit.getWorlds().forEach(x -> x.setThundering(false));
+                                Bukkit.getWorlds().forEach(x -> {
+                                    x.setStorm(true);
+                                    x.setThundering(false);
+                                });
                                 break;
                             case "THUNDER":
-                                Bukkit.getWorlds().forEach(x -> x.setStorm(true));
-                                Bukkit.getWorlds().forEach(x -> x.setThundering(true));
+                                Bukkit.getWorlds().forEach(x -> {
+                                    x.setStorm(true);
+                                    x.setThundering(true);
+                                });
                                 break;
                         }
 
